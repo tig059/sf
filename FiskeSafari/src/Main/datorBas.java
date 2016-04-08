@@ -205,7 +205,38 @@ public class datorBas {
          return printing;
 
      }
-        
+               public int sendQueryMax(String str)
+
+     {
+
+          int printing = 0;
+         try
+
+         {
+
+              rs = stmnt.executeQuery(str);
+                    while(rs.next())
+      {
+        //printing = printing + rs.getString("aId") + "\n";
+        printing = printing + rs.getInt("sId");
+
+
+      }
+
+         }
+         
+
+         catch(SQLException e)
+
+         {
+              
+
+         }
+
+    
+         return printing;
+
+     }   
           public String sendQueryPasswordAdmin(String str)
 
      {
