@@ -137,14 +137,18 @@ public class windowCustomer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
-        datorBas a = new datorBas();
+      /*  datorBas a = new datorBas();
         a.DBHandler();
-        String safariInfo =  a.sendQuery("select * from safari");
-        jTextField1.setText(safariInfo);        // TODO add your handling code here:
+        String safariInfo =  a.sendQuerySafari("select * from safari");
+        textField1.setText(safariInfo);    */    // TODO add your handling code here:
     }//GEN-LAST:event_textField1ActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-               
+ datorBas a = new datorBas();
+        a.DBHandler();
+        String safariInfo =  a.sendQuerySafari("select * from safari");
+        textField1.setText(safariInfo);  
+        System.out.println("Klickat på visaknappen");
        
         
         
