@@ -22,6 +22,7 @@ public class windowCustomer extends javax.swing.JFrame {
     public windowCustomer() {
      
         
+        
         initComponents();
                        datorBas a = new datorBas();
         a.DBHandler();
@@ -81,6 +82,11 @@ public class windowCustomer extends javax.swing.JFrame {
         });
 
         button2.setLabel("button2");
+        button2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button2ActionPerformed(evt);
+            }
+        });
 
         textField3.setText("textField3");
 
@@ -170,12 +176,20 @@ public class windowCustomer extends javax.swing.JFrame {
         String safariInfo =  a.sendQuerySafariVisa("select * from safari");
         
       textArea1.setText(safariInfo);  
-        System.out.println(safariInfo);
+      System.out.println(safariInfo);
        
         
         
 // TODO add your handling code here:
     }//GEN-LAST:event_button1ActionPerformed
+
+    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+         
+        login p = new login();
+        
+        String thisAccount = p.getmyAccount();
+        System.out.println(thisAccount);        // TODO add your handling code here:
+    }//GEN-LAST:event_button2ActionPerformed
 
     /**
      * @param args the command line arguments

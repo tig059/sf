@@ -111,6 +111,12 @@ public class login extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+        public void setmyAccount(String a){
+        
+        String myAccount2 = a;
+       
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         //char[] password = jPasswordField1.getPassword();
@@ -174,7 +180,15 @@ public class login extends javax.swing.JFrame {
                  
                    }
                    else {  
-
+                       
+        
+        
+        
+        
+                    login x = new login();
+                    .setmyAccount(myAccount);
+                   
+                       
                     windowCustomer p = new windowCustomer();
                     p.setVisible(true);
                     this.dispose();
@@ -202,6 +216,14 @@ public class login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
+     public String getmyAccount(){
+        
+        String myAccount = String.valueOf(jTextField1.getText());
+        return myAccount;
+    }
+     
+     
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
