@@ -116,8 +116,8 @@ public class adminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         datorBas a = new datorBas(); 
         a.DBHandler();
-        String sdsa = a.sendQuery("select * from safari");
-        System.out.println(sdsa);
+       // String sdsa = a.sendQuery("select * from safari");
+        //System.out.println(sdsa);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
