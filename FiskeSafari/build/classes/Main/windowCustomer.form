@@ -41,11 +41,6 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="393" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Component id="textField2" min="-2" pref="192" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -67,6 +62,19 @@
                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="393" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="291" max="-2" attributes="0"/>
+                      <Component id="textArea1" min="-2" pref="394" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,7 +104,9 @@
                   <Component id="textField3" min="-2" max="-2" attributes="0"/>
                   <Component id="button2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="200" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="textArea1" min="-2" pref="117" max="-2" attributes="0"/>
+              <EmptySpace pref="65" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -142,6 +152,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="textField4"/>
       </Properties>
+    </Component>
+    <Component class="java.awt.TextArea" name="textArea1">
     </Component>
   </SubComponents>
 </Form>

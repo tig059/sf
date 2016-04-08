@@ -44,6 +44,7 @@ public class windowCustomer extends javax.swing.JFrame {
         button2 = new java.awt.Button();
         textField3 = new java.awt.TextField();
         textField4 = new java.awt.TextField();
+        textArea1 = new java.awt.TextArea();
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -87,10 +88,6 @@ public class windowCustomer extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(393, 393, 393)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -108,6 +105,15 @@ public class windowCustomer extends javax.swing.JFrame {
                             .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(70, 70, 70))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(393, 393, 393)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(291, 291, 291)
+                        .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +136,9 @@ public class windowCustomer extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,9 +154,10 @@ public class windowCustomer extends javax.swing.JFrame {
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
  datorBas a = new datorBas();
         a.DBHandler();
-        String safariInfo =  a.sendQuerySafari("select * from safari");
-        textField1.setText(safariInfo);  
-        System.out.println("Klickat på visaknappen");
+        String safariInfo =  a.sendQuerySafariVisa("select * from safari");
+        
+      textArea1.setText(safariInfo);  
+        System.out.println(safariInfo);
        
         
         
@@ -195,6 +204,7 @@ public class windowCustomer extends javax.swing.JFrame {
     private java.awt.Button button2;
     private javax.swing.JLabel jLabel1;
     private java.awt.Panel panel1;
+    private java.awt.TextArea textArea1;
     private java.awt.TextField textField1;
     private java.awt.TextField textField2;
     private java.awt.TextField textField3;

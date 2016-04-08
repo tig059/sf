@@ -101,6 +101,51 @@ public class datorBas {
      }
       
       
+      public String sendQuerySafariVisa(String str)
+
+     {
+
+          String printing = "";
+         try
+
+         {
+
+              rs = stmnt.executeQuery(str);
+                    while(rs.next())
+      {
+        //printing = printing + rs.getString("aId") + "\n";
+        printing = printing + rs.getString("sId")  + "\n";
+        printing = printing + rs.getString("sName")  + "\n";
+        printing = printing + rs.getString("sPlace") + "\n";
+        printing = printing + rs.getString("sSpotsMax") + "\n";
+        printing = printing + rs.getString("sDate") + "\n";
+        printing = printing + rs.getString("gId") + "\n";
+        printing = printing + rs.getString("gName") + "\n";
+        printing = printing + rs.getString("sSpotsTaken") + "\n";
+        printing = printing + rs.getString("sEquipementLeft") + "\n";
+        //printing = printing + rs.getString("gInfo");
+        printing = printing + rs.getString("cInfo") + "\n";
+        
+
+
+      }
+
+         }
+         
+
+         catch(SQLException e)
+
+         {
+              
+
+         }
+
+    
+         return printing;
+
+     }
+      
+      
      public void sendQuery(String str)
 
      {
