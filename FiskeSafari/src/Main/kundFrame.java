@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+// hej ompis
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
