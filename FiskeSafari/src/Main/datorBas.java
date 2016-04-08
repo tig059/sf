@@ -56,6 +56,51 @@ public class datorBas {
      }
 
   
+     
+      public String sendQuerySafari(String str)
+
+     {
+
+          String printing = "";
+         try
+
+         {
+
+              rs = stmnt.executeQuery(str);
+                    while(rs.next())
+      {
+        //printing = printing + rs.getString("aId") + "\n";
+        printing = printing + rs.getString("sId");
+        printing = printing + rs.getString("sName");
+        printing = printing + rs.getString("sPlace");
+        printing = printing + rs.getString("sSpotsMax");
+        printing = printing + rs.getString("sDate");
+        printing = printing + rs.getString("gId");
+        printing = printing + rs.getString("sSpotsTaken");
+        printing = printing + rs.getString("sEquipementLeft");
+        printing = printing + rs.getString("gInfo");
+        printing = printing + rs.getString("cInfo");
+        
+
+
+      }
+
+         }
+         
+
+         catch(SQLException e)
+
+         {
+              
+
+         }
+
+    
+         return printing;
+
+     }
+      
+      
      public void sendQuery(String str)
 
      {
