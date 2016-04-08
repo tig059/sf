@@ -57,7 +57,7 @@ public class datorBas {
 
   
      
-      public String sendQuerySafari(String str)
+      public String sendQueryUserInfo(String str)
 
      {
 
@@ -70,16 +70,10 @@ public class datorBas {
                     while(rs.next())
       {
         //printing = printing + rs.getString("aId") + "\n";
-        printing = printing + rs.getString("sId");
-        printing = printing + rs.getString("sName");
-        printing = printing + rs.getString("sPlace");
-        printing = printing + rs.getString("sSpotsMax");
-        printing = printing + rs.getString("sDate");
-        printing = printing + rs.getString("gId");
-        printing = printing + rs.getString("sSpotsTaken");
-        printing = printing + rs.getString("sEquipementLeft");
-        printing = printing + rs.getString("gInfo");
-        printing = printing + rs.getString("cInfo");
+        printing = printing + rs.getString("cId") + "\n";
+        printing = printing + rs.getString("cName") + "\n";
+        printing = printing + rs.getString("cSex") + "\n";
+        printing = printing + rs.getString("cEmail") + "\n";
         
 
 
