@@ -239,8 +239,8 @@ public class kundFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         datorBas a = new datorBas();
         a.DBHandler();
-        String folk =  a.sendQuerySafari("select * from safari");
-        jTextArea1.setText(folk);
+        //String folk =  a.sendQuerySafari("select * from safari");
+        //jTextArea1.setText(folk);
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

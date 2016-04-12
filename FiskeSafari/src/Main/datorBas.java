@@ -70,9 +70,9 @@ public class datorBas {
                     while(rs.next())
       {
         //printing = printing + rs.getString("aId") + "\n";
-        printing = printing + rs.getString("cId") + "\n";
+        printing = printing + "Username: " + rs.getString("cId") + "\n";
         printing = printing + rs.getString("cName") + "\n";
-        printing = printing + rs.getString("cSex") + "\n";
+        //printing = printing + rs.getString("cSex") + "\n";
         printing = printing + rs.getString("cEmail") + "\n";
         
 
@@ -108,17 +108,18 @@ public class datorBas {
                     while(rs.next())
       {
         //printing = printing + rs.getString("aId") + "\n";
-        printing = printing + rs.getString("sId")  + "\n";
-        printing = printing + rs.getString("sName")  + "\n";
-        printing = printing + rs.getString("sPlace") + "\n";
-        printing = printing + rs.getString("sSpotsMax") + "\n";
-        printing = printing + rs.getString("sDate") + "\n";
-        printing = printing + rs.getString("gId") + "\n";
-        printing = printing + rs.getString("gName") + "\n";
-        printing = printing + rs.getString("sSpotsTaken") + "\n";
-        printing = printing + rs.getString("sEquipementLeft") + "\n";
-        //printing = printing + rs.getString("gInfo");
-        printing = printing + rs.getString("cInfo") + "\n";
+        printing = printing + "Safari ID :  "+ rs.getString("sId")  + "\n";
+        printing = printing + "Location  :  "+rs.getString("sPlace") + "\n";
+        printing = printing + "Safari    :  "+rs.getString("sName")  + "\n";
+        printing = printing + "Spots     :  "+rs.getString("sSpotsTaken");
+        printing = printing + "/"+rs.getString("sSpotsMax") + "\n";
+        printing = printing + "Date      :  "+rs.getString("sDate") + "\n";
+        printing = printing + "Guide ID  :  "+rs.getString("gId") + "\n";
+        //printing = printing + rs.getString("gName") + "\n";
+        printing = printing + "Equipment :  "+rs.getString("sEquipementLeft") + "\n";
+        //printing = printing + "nfo: "+rs.getString("gInfo");
+        printing = printing + "Info      :  "+rs.getString("cInfo") + "\n";
+        printing = printing + "\n" + "\n";
         
 
 
@@ -212,7 +213,7 @@ public class datorBas {
                     while(rs.next())
       {
         //printing = printing + rs.getString("aId") + "\n";
-        printing = printing + rs.getInt("sId");
+        printing = printing + rs.getInt(1);
 
 
       }

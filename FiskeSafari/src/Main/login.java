@@ -186,10 +186,10 @@ public class login extends javax.swing.JFrame {
         
         
                     login x = new login();
-                    .setmyAccount(myAccount);
+                    //.setmyAccount(myAccount);
                    
                        
-                    windowCustomer p = new windowCustomer();
+                    windowCustomer p = new windowCustomer(myAccount);
                     p.setVisible(true);
                     this.dispose();
                    }

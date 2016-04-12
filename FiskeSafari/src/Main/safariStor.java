@@ -133,7 +133,7 @@ public class safariStor extends javax.swing.JFrame {
         datorBas a = new datorBas();
         a.DBHandler();
         int sIdmax = a.sendQueryMax("select max(sId) from safari");
-        int sId = sIdmax + 1;    // send in
+        sIdmax++;    // send in
         String sea = "Storsjön";  // send in
         int gId = 1;  // send in
         String safariName = jTextField5.getText(); // send in
@@ -145,18 +145,18 @@ public class safariStor extends javax.swing.JFrame {
         String cInfo= jTextField4.getText();
         String date= jTextField1.getText();
         
-        datorBas q = new datorBas();
-        q.DBHandler();
-        
+
         // send in to
       //  a.sendQuert("INSERT INTO guide VALUES")
-        //q.sendQuery("INSERT INTO custumer VALUES " + "('" + 32 + "', '" + "dsa" + "', '" + "dsa" + "' , '" + "dsadsa" + "' , '" + "dsdsa" + "'" + ")");
-       q.sendQuery("INSERT INTO safari VALUES " + "('" + sId + "', '" + sea + "', '" + safariName + "', '" + gId + "' , '" + date + "', '" + equipLeft2 + "' , '" + spotsMax + "' , '" + gInfo + "' , '" + cInfo + "' , '" + spotsTaken + "'" + ")");
-          //a.sendQuery("INSERT INTO safari VALUES (5,tve,dsds,2,933d,3,3,dsa,dsa,2)");
+        //
+       //a.sendQuery("INSERT INTO custumer VALUES " + "('" + 32 + "', '" + "dsa" + "', '" + "dsa" + "' , '" + "dsadsa" + "' , '" + "dsdsa" + "'" + ")");
+       a.sendQuery("INSERT INTO safari VALUES " + "('" + sIdmax + "', '" + safariName + "', '" + sea + "', '" + spotsMax + "' , '" + date + "', '" + gId + "' , '" + spotsTaken + "' , '" + equipLeft2 + "' , '" + gInfo + "' , '" + cInfo + "'" + ")");
+       this.dispose();
+       //a.sendQuery("INSERT INTO safari VALUES (5,tve,dsds,2,933d,3,3,dsa,dsa,2)");
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:x
         this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 

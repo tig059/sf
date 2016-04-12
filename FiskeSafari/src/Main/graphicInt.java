@@ -10,7 +10,7 @@
  * @author Jack
  */
 public class graphicInt extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form graphicInt
      */
