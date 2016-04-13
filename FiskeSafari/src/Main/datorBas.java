@@ -94,6 +94,43 @@ public class datorBas {
 
      }
       
+      public String sendQueryGuideInfo(String str)
+
+     {
+
+          String printing = "";
+         try
+
+         {
+
+              rs = stmnt.executeQuery(str);
+                    while(rs.next())
+      {
+        //printing = printing + rs.getString("aId") + "\n";
+        printing = printing + "Username: " + rs.getString("gId") + "\n";
+        printing = printing + "Full name: " +  rs.getString("gName") + "\n";
+        //printing = printing + rs.getString("cSex") + "\n";
+        printing = printing + "Password: " +rs.getString("gPassword") + "\n";
+        
+
+
+      }
+
+         }
+         
+
+         catch(SQLException e)
+
+         {
+              
+
+         }
+
+    
+         return printing;
+
+     }
+      
       
       public String sendQuerySafariVisa(String str)
 
@@ -124,6 +161,57 @@ public class datorBas {
 
 
       }
+                    
+                   
+
+         }
+         
+
+         catch(SQLException e)
+
+         {
+              
+
+         }
+
+    
+         return printing;
+
+     }
+      
+      
+      
+      public String sendQuerySafariVisaGuide(String str)
+
+     {
+
+          String printing = "";
+         try
+
+         {
+
+              rs = stmnt.executeQuery(str);
+                    while(rs.next())
+      {
+        //printing = printing + rs.getString("aId") + "\n";
+        printing = printing + "Safari ID :  "+ rs.getString("sId")  + "\n";
+        printing = printing + "Location  :  "+rs.getString("sPlace") + "\n";
+        printing = printing + "Safari    :  "+rs.getString("sName")  + "\n";
+        printing = printing + "Spots     :  "+rs.getString("sSpotsTaken");
+        printing = printing + "/"+rs.getString("sSpotsMax") + "\n";
+        printing = printing + "Date      :  "+rs.getString("sDate") + "\n";
+        printing = printing + "Guide ID  :  "+rs.getString("gId") + "\n";
+       // printing = printing + rs.getString("gName") + "\n";
+        printing = printing + "Equipment :  "+rs.getString("sEquipementLeft") + "\n";
+        printing = printing + "nfo: "+rs.getString("gInfo");
+        //printing = printing + "Info      :  "+rs.getString("cInfo") + "\n";
+        printing = printing + "\n" + "\n";
+        
+
+
+      }
+                    
+                   
 
          }
          
