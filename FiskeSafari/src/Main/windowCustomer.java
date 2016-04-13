@@ -27,7 +27,7 @@ public class windowCustomer extends javax.swing.JFrame {
       
         
         initComponents();
-                       datorBas a = new datorBas();
+        datorBas a = new datorBas();
         a.DBHandler();
         
        
@@ -209,10 +209,12 @@ public class windowCustomer extends javax.swing.JFrame {
         String sleep = "e";
         String participants = jTextField2.getText();
         String equipment = jTextField3.getText();
-        //make int
+        //make int and boolean
+        boolean hasPaid = true;
         int participants2 = Integer.parseInt(participants);
         int participants3 = participants2 +1;
         int equipment2 = Integer.parseInt(equipment);
+        String part4 = Integer.toString(participants3);
         //int price = 100;
        // int total = participants2 * price;
         //String total2 = Integer.toString(total);
@@ -233,14 +235,22 @@ public class windowCustomer extends javax.swing.JFrame {
            sleep = "none";
         }
         //Add to participants
+        datorBas q = new datorBas();
+        q.DBHandler();
+        // Gör en ny sendQuerytomorrow.
         
-        //Add to participants
+        String takenSpots = q.sendQuerySpotsTaken("select sSpotsTaken from safari");
+        System.out.println(takenSpots);
+        //if(participants3)
+        q.sendQuery("INSERT INTO participant VALUES " + "('" + accountName + "', '" + sId + "', '" + sleep + "', '" + participants3 + "' , '" + equipment2 + "', '" + hasPaid + "'" + ")");
+        q.sendQuery("update safari set sSpotsTaken = '" + part4 +  "' where sId = " + "'" + sId + "'");
+        q.sendQuery("update safari set sEquipementLeft  = '" + equipment +  "' where sId = " + "'" + sId + "'");
         
         //Uppdatera i textfields
-        datorBas a = new datorBas();
-        a.DBHandler();
-        String safariInfo =  a.sendQuerySafariVisa("select * from safari");
-        String bookings =  a.sendQueryUserInfo("select * from participants where cId =" + "'" +  accountName + "'");
+
+        
+        String safariInfo =  q.sendQuerySafariVisa("select * from safari");
+        String bookings =  q.sendQueryUserInfo("select * from participants");
         
         textArea1.setText(safariInfo); // visar info om alla safari
         textArea2.setText(bookings);  //Visar info om dina signade safaris
