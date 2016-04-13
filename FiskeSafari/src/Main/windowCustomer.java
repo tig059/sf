@@ -212,7 +212,7 @@ public class windowCustomer extends javax.swing.JFrame {
         //make int and boolean
         boolean hasPaid = true;
         int participants2 = Integer.parseInt(participants);
-        int participants3 = participants2 +1;
+        int participants3 = participants2 + 1;
         int equipment2 = Integer.parseInt(equipment);
         String part4 = Integer.toString(participants3);
         //int price = 100;
@@ -238,14 +238,34 @@ public class windowCustomer extends javax.swing.JFrame {
         datorBas q = new datorBas();
         q.DBHandler();
         // Gör en ny sendQuerytomorrow.
+       
+        String currentTakenSpots = q.sendQuerySpotsTaken("select sSpotsTaken from safari where sId =" + "'" + sId + "'");
+        int currentTakenSpots2 = Integer.parseInt(currentTakenSpots);
+        int totalSpots = currentTakenSpots2 + participants3;
+        String totalSpots2 = Integer.toString(totalSpots);
         
-
-        //if(participants3)
-        q.sendQuery("INSERT INTO participant VALUES " + "('" + accountName + "', '" + sId + "', '" + sleep + "', '" + participants3 + "' , '" + equipment2 + "', '" + hasPaid + "'" + ")");
-        q.sendQuery("update safari set sSpotsTaken = '" + part4 +  "' where sId = " + "'" + sId + "'");
+        if (totalSpots>15) {
+            
+            // ErrorMsg
+            System.out.println("This safari is full.");
+            
+        }
+        else {
+        q.sendQuery("INSERT INTO participant VALUES " + "('" + accountName + "', '" + sId + "', '" + sleep + "', '" + part4 + "' , '" + equipment2 + "', '" + hasPaid + "'" + ")");
+        q.sendQuery("update safari set sSpotsTaken = '" + totalSpots2 +  "' where sId = " + "'" + sId + "'");
         q.sendQuery("update safari set sEquipementLeft  = '" + equipment +  "' where sId = " + "'" + sId + "'");
+        }
+        
+        //q.sendQuery("INSERT INTO participant VALUES " + "('" + accountName + "', '" + sId + "', '" + sleep + "', '" + participants3 + "' , '" + equipment2 + "', '" + hasPaid + "'" + ")");
+        //q.sendQuery("update safari set sSpotsTaken = '" + part4 +  "' where sId = " + "'" + sId + "'");
+        //q.sendQuery("update safari set sEquipementLeft  = '" + equipment +  "' where sId = " + "'" + sId + "'");
         
         String takenSpots = q.sendQuerySpotsTaken("select sSpotsTaken from safari where sId =" + "'" + sId + "'");
+        int takenSpots2 = Integer.parseInt(takenSpots);
+        if(takenSpots2>15) {
+        System.out.println("Over 15 spots error");
+        }
+        
         System.out.println(takenSpots);
         //Uppdatera i textfields
 
