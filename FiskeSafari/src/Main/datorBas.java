@@ -393,6 +393,37 @@ public class datorBas {
          return printing;
 
      }
+                   public String sendQuerySpotsTaken(String str)
+
+     {
+
+          String printing = "";
+         try
+
+         {
+
+              rs = stmnt.executeQuery(str);
+                    while(rs.next())
+      {
+          
+        printing = printing + rs.getString("sSpotsTaken");
+
+      }
+
+         }
+         
+
+         catch(SQLException e)
+
+         {
+              
+
+         }
+
+    
+         return printing;
+
+     }
                                                    
      public void closeAll()
 

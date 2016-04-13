@@ -239,13 +239,14 @@ public class windowCustomer extends javax.swing.JFrame {
         q.DBHandler();
         // Gör en ny sendQuerytomorrow.
         
-        String takenSpots = q.sendQuerySpotsTaken("select sSpotsTaken from safari");
-        System.out.println(takenSpots);
+
         //if(participants3)
         q.sendQuery("INSERT INTO participant VALUES " + "('" + accountName + "', '" + sId + "', '" + sleep + "', '" + participants3 + "' , '" + equipment2 + "', '" + hasPaid + "'" + ")");
         q.sendQuery("update safari set sSpotsTaken = '" + part4 +  "' where sId = " + "'" + sId + "'");
         q.sendQuery("update safari set sEquipementLeft  = '" + equipment +  "' where sId = " + "'" + sId + "'");
         
+        String takenSpots = q.sendQuerySpotsTaken("select sSpotsTaken from safari where sId =" + "'" + sId + "'");
+        System.out.println(takenSpots);
         //Uppdatera i textfields
 
         
