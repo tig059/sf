@@ -163,7 +163,7 @@ public class login extends javax.swing.JFrame {
                 else {  
                   //  System.out.println("Correct password!");
                 //    System.out.println("ÖPPNA guideuserface!" + "\n");
-                                        windowGuide p = new windowGuide();
+                                        windowGuide p = new windowGuide(myAccount);
                     p.setVisible(true);
                     this.dispose();
                 }
