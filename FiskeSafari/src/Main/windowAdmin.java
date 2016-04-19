@@ -35,7 +35,7 @@ public class windowAdmin extends javax.swing.JFrame {
 
         jLabel1.setText("Admin");
 
-        jToggleButton1.setText("Exit");
+        jToggleButton1.setText("Log Out");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
@@ -57,7 +57,7 @@ public class windowAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jToggleButton1))
-                .addGap(0, 325, Short.MAX_VALUE))
+                .addGap(0, 306, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
@@ -78,6 +78,8 @@ public class windowAdmin extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
+               graphicInt a = new graphicInt();
+        a.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 

@@ -21,6 +21,14 @@ public class login extends javax.swing.JFrame {
         initComponents();
     }
     
+               private void errorMsg2(String msg) {
+        final ImageIcon icon = new ImageIcon("main/fisk.png");
+        JOptionPane.showMessageDialog(null, "hej pontus", "pontus", JOptionPane.INFORMATION_MESSAGE, icon);
+   	//JOptionPane optionPane = new JOptionPane(msg, JOptionPane.INFORMATION_MESSAGE);    
+   	//JDialog dialog = optionPane.createDialog("Succes");
+   	//dialog.setAlwaysOnTop(true);
+   	//dialog.setVisible(true);
+   	}
    private void errorMsg(String msg) {
    	JOptionPane optionPane = new JOptionPane(msg, JOptionPane.ERROR_MESSAGE);    
    	JDialog dialog = optionPane.createDialog("Failure");
@@ -86,7 +94,7 @@ public class login extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,6 +136,12 @@ public class login extends javax.swing.JFrame {
         String guideUserName = a.sendQueryUsernameGuide("select gId from guide where gId ='" + myAccount + "'");
         String customerUserName = a.sendQueryUsernameCustomer("select cId from custumer where cId ='" + myAccount + "'");
         
+         if (customerUserName.equals("9501098932")){
+             System.out.println("tessssst");
+             errorMsg2("hehehehe");
+              //  System.out.println("This is not a correct Customer username!");
+            }
+         
         // LOGIN FÖR ADMIN
             if (!adminUserName.equals(myAccount)){
           //      System.out.println("This is not a correct admin username!");

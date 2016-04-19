@@ -34,16 +34,24 @@ public class windowCustomer extends javax.swing.JFrame {
         a.DBHandler();
         System.out.println("Inside constructor of windowCustomer, "+
                 " accountName: " + accountName);
-        String safariInfo =  a.sendQuerySafariVisa("select * from safari");
+        String safariInfo =  a.sendQuerySafariVisa("select * from safari where sSpotsTaken != 15");
         String userInfo =  a.sendQueryUserInfo("select * from custumer where cId =" + "'" +  accountName + "'");
+        String yourSafaris = a.sendQueryOwnSafari("select * from safari, participant where safari.sId = participant.sId and participant.cId =" + "'" + accountName + "'");
+        textArea2.setText(yourSafaris + "\n" + "\n");
         
         textArea1.setText(safariInfo); // visar info om alla safari
         jTextArea1.setText(userInfo); // Visar info om användare
-        textArea2.setText(safariInfo);  //Visar info om dina signade safaris
-        System.out.println(safariInfo);
         
  
     }
+           private void errorMsg(String msg) {
+        final ImageIcon icon = new ImageIcon("fisk.png");
+        JOptionPane.showMessageDialog(null, "You bought a fiskekort for 100 riksdaler", "Fiskekort", JOptionPane.INFORMATION_MESSAGE, icon);
+   	//JOptionPane optionPane = new JOptionPane(msg, JOptionPane.INFORMATION_MESSAGE);    
+   	//JDialog dialog = optionPane.createDialog("Succes");
+   	//dialog.setAlwaysOnTop(true);
+   	//dialog.setVisible(true);
+   	}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,6 +76,10 @@ public class windowCustomer extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
         jTextField3 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jTextField4 = new javax.swing.JTextField();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -119,6 +131,34 @@ public class windowCustomer extends javax.swing.JFrame {
 
         jLabel1.setText("Price");
 
+        jToggleButton1.setText("Unbook");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jTextField4.setText("sId");
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton2.setText("Loggout");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton3.setText("Buy fiskekort");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,7 +167,17 @@ public class windowCustomer extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel1))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton2)
+                    .addComponent(jToggleButton3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -136,20 +186,16 @@ public class windowCustomer extends javax.swing.JFrame {
                         .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(158, 158, 158))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(textArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel1)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jToggleButton1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(11, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,20 +213,28 @@ public class windowCustomer extends javax.swing.JFrame {
                     .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(90, 90, 90)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jToggleButton3))
+                            .addComponent(textArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButton1)
+                            .addComponent(jToggleButton2))))
                 .addGap(0, 390, Short.MAX_VALUE))
         );
 
@@ -215,11 +269,7 @@ public class windowCustomer extends javax.swing.JFrame {
         int participants3 = participants2 + 1;
         int equipment2 = Integer.parseInt(equipment);
         String part4 = Integer.toString(participants3);
-        //int price = 100;
-       // int total = participants2 * price;
-        //String total2 = Integer.toString(total);
-       // jLabel1.setText(total2);
-        // Accomindation
+        
         if (jComboBox1.getSelectedItem().equals("Tent")){
         System.out.println("Tent");
         sleep = "Tent";
@@ -238,8 +288,16 @@ public class windowCustomer extends javax.swing.JFrame {
         datorBas q = new datorBas();
         q.DBHandler();
         // Gör en ny sendQuerytomorrow.
-       
-        String currentTakenSpots = q.sendQuerySpotsTaken("select sSpotsTaken from safari where sId =" + "'" + sId + "'");
+        
+        String currentEquipementLeft = q.sendQueryEq("select sEquipementLeft from safari where sId =" + "'" + sId + "'");
+        int currentEquipementLeft2 = Integer.parseInt(currentEquipementLeft);
+        int totaleq = currentEquipementLeft2 - equipment2;
+        String totaleq2 = Integer.toString(totaleq);
+        if (totaleq < 0) {
+            System.out.println("Sorry no EQ LEFT!!!!");
+        }
+        else {
+                    String currentTakenSpots = q.sendQuerySpotsTaken("select sSpotsTaken from safari where sId =" + "'" + sId + "'");
         int currentTakenSpots2 = Integer.parseInt(currentTakenSpots);
         int totalSpots = currentTakenSpots2 + participants3;
         String totalSpots2 = Integer.toString(totalSpots);
@@ -253,7 +311,9 @@ public class windowCustomer extends javax.swing.JFrame {
         else {
         q.sendQuery("INSERT INTO participant VALUES " + "('" + accountName + "', '" + sId + "', '" + sleep + "', '" + part4 + "' , '" + equipment2 + "', '" + hasPaid + "'" + ")");
         q.sendQuery("update safari set sSpotsTaken = '" + totalSpots2 +  "' where sId = " + "'" + sId + "'");
-        q.sendQuery("update safari set sEquipementLeft  = '" + equipment +  "' where sId = " + "'" + sId + "'");
+        q.sendQuery("update safari set sEquipementLeft  = '" + totaleq2 +  "' where sId = " + "'" + sId + "'");
+        }
+          
         }
         
         //q.sendQuery("INSERT INTO participant VALUES " + "('" + accountName + "', '" + sId + "', '" + sleep + "', '" + participants3 + "' , '" + equipment2 + "', '" + hasPaid + "'" + ")");
@@ -265,19 +325,53 @@ public class windowCustomer extends javax.swing.JFrame {
         if(takenSpots2>15) {
         System.out.println("Over 15 spots error");
         }
-        
-        System.out.println(takenSpots);
+       
+        String participantsq = jTextField2.getText();
+        int participants2q = Integer.parseInt(participantsq);
+        int participants3q = participants2q +1;
+        int priceq = 100;
+        int totalq = (participants3q*priceq);
+        String total2q = Integer.toString(totalq);
+        jLabel1.setText(total2q);
         //Uppdatera i textfields
-
         
-        String safariInfo =  q.sendQuerySafariVisa("select * from safari");
+        String safariInfo =  q.sendQuerySafariVisa("select * from safari where sSpotsTaken != 15");
         String bookings =  q.sendQueryUserInfo("select * from participants");
-        
+        String yourSafaris = q.sendQueryOwnSafari("select * from safari, participant where safari.sId = participant.sId and participant.cId =" + "'" + accountName + "'");
         textArea1.setText(safariInfo); // visar info om alla safari
-        textArea2.setText(bookings);  //Visar info om dina signade safaris
+        //textArea2.setText(bookings);  //Visar info om dina signade safaris
+        textArea2.setText(yourSafaris + "Total price:" + total2q + "\n" + "\n");
         // Uppdatera knapparna
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        datorBas z = new datorBas();
+        z.DBHandler();
+        String avbokId = jTextField4.getText();
+        z.sendQuery("delete from participant where cId =" + "'" + accountName + "'" + "and sId=" + "'" + avbokId + "'");
+        String yourSafaris = z.sendQueryOwnSafari("select * from safari, participant where safari.sId = participant.sId and participant.cId =" + "'" + accountName + "'");
+        textArea2.setText(yourSafaris + "\n" + "\n");
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // TODO add your handling code here:
+        graphicInt a = new graphicInt();
+        a.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("you have bought a fiskekort");
+        errorMsg("You have bought a fiskekort for 100 kronor");
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,6 +417,10 @@ public class windowCustomer extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
