@@ -20,7 +20,7 @@ public class login extends javax.swing.JFrame {
     public login() {
         initComponents();
     }
-    
+    //testpush
                private void errorMsg2(String msg) {
         final ImageIcon icon = new ImageIcon("main/fisk.png");
         JOptionPane.showMessageDialog(null, "hej pontus", "pontus", JOptionPane.INFORMATION_MESSAGE, icon);
