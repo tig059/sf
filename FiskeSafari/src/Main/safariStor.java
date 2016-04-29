@@ -10,7 +10,7 @@
  * @author Jack
  */
 public class safariStor extends javax.swing.JFrame {
-
+Methods m = new Methods();
     /**
      * Creates new form safariStor
      */
@@ -125,15 +125,10 @@ public class safariStor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-        /*int idmax = a.sendQuery2("select max(id) from medlem");
-             System.out.println(idmax);
-        
-             idmax++;*/
-        datorBas a = new datorBas();
-        a.DBHandler();
-        int sIdmax = a.sendQueryMax("select max(sId) from safari");
+
+        int sIdmax = m.getSIdMax();
         sIdmax++;    // send in
+        
         String sea = "Storsjön";  // send in
         int gId = 1;  // send in
         String safariName = jTextField5.getText(); // send in
@@ -146,11 +141,12 @@ public class safariStor extends javax.swing.JFrame {
         String date= jTextField1.getText();
         
 
-        // send in to
-      //  a.sendQuert("INSERT INTO guide VALUES")
-        //
-       //a.sendQuery("INSERT INTO custumer VALUES " + "('" + 32 + "', '" + "dsa" + "', '" + "dsa" + "' , '" + "dsadsa" + "' , '" + "dsdsa" + "'" + ")");
-       a.sendQuery("INSERT INTO safari VALUES " + "('" + sIdmax + "', '" + safariName + "', '" + sea + "', '" + spotsMax + "' , '" + date + "', '" + gId + "' , '" + spotsTaken + "' , '" + equipLeft2 + "' , '" + gInfo + "' , '" + cInfo + "'" + ")");
+     
+       //a.sendQuery("INSERT INTO safari VALUES " + "('" + sIdmax + "', '" + safariName + "', '" + sea + "', '" + spotsMax + "' , '" + date + "', '" + gId + "' , '" + spotsTaken + "' , '" + equipLeft2 + "' , '" + gInfo + "' , '" + cInfo + "'" + ")");
+       m.createSafari(sIdmax,safariName,sea,spotsMax,date,gId,spotsTaken,equipLeft2,gInfo,cInfo);
+       //(String sIdmax, String safariName, String sea, String spotsMax, String date, String gId, String spotsTaken, String equipLeft2, String gInfo, String cInfo){
+       //Betalning sker
+       
        this.dispose();
        //a.sendQuery("INSERT INTO safari VALUES (5,tve,dsds,2,933d,3,3,dsa,dsa,2)");
     }//GEN-LAST:event_jToggleButton1ActionPerformed

@@ -13,7 +13,7 @@ import java.util.*;
  * @author Jack
  */
 public class login extends javax.swing.JFrame {
-
+     Methods m = new Methods();
     /**
      * Creates new form loginAdmin
      */
@@ -132,10 +132,12 @@ public class login extends javax.swing.JFrame {
         String myAccount  = String.valueOf(jTextField1.getText());
         datorBas a = new datorBas();
         a.DBHandler();
-        String adminUserName = a.sendQueryUsernameAdmin("select aId from admin where aId ='" + myAccount + "'");
-        String guideUserName = a.sendQueryUsernameGuide("select gId from guide where gId ='" + myAccount + "'");
-        String customerUserName = a.sendQueryUsernameCustomer("select cId from custumer where cId ='" + myAccount + "'");
-        
+        //String adminUserName = a.sendQueryUsernameAdmin("select aId from admin where aId ='" + myAccount + "'");
+        String adminUserName = m.getAdminUsername(myAccount);
+        //String guideUserName = a.sendQueryUsernameGuide("select gId from guide where gId ='" + myAccount + "'");
+        String guideUserName = m.getGuideUsername(myAccount);
+        //String customerUserName = a.sendQueryUsernameCustomer("select cId from custumer where cId ='" + myAccount + "'");
+        String customerUserName = m.getCustomerUsername(myAccount);
          if (customerUserName.equals("9501098932")){
              System.out.println("tessssst");
              errorMsg2("hehehehe");
@@ -149,7 +151,8 @@ public class login extends javax.swing.JFrame {
 
             else {
              System.out.println(adminUserName);
-             String adminPassword = a.sendQueryPasswordAdmin("select aPassword from admin where aId ='" + myAccount + "'");
+             //String adminPassword = a.sendQueryPasswordAdmin("select aPassword from admin where aId ='" + myAccount + "'");
+             String adminPassword = m.getAdminPassword(myAccount);
                 if (!adminPassword.equals(myPass)){
          //       System.out.println("Wrong Password!");
                     }
@@ -170,7 +173,8 @@ public class login extends javax.swing.JFrame {
 
             else {
              System.out.println(guideUserName);
-             String guidePassword = a.sendQueryPasswordGuide("select gPassword from guide where gId ='" + myAccount + "'");
+             //String guidePassword = a.sendQueryPasswordGuide("select gPassword from guide where gId ='" + myAccount + "'");
+             String guidePassword = m.getGuidePassword(myAccount);
                 if (!guidePassword.equals(myPass)){
               //  System.out.println("Wrong Password for guide!");
                     }
@@ -189,7 +193,8 @@ public class login extends javax.swing.JFrame {
 
             else {
                 System.out.println(customerUserName);
-                String customerPassword = a.sendQueryPasswordCustomer("select cPassword from custumer where cId ='" + myAccount + "'");
+                    //String customerPassword = a.sendQueryPasswordCustomer("select cPassword from custumer where cId ='" + myAccount + "'");
+                    String customerPassword = m.getCustomerPassword(myAccount);
                    if (!customerPassword.equals(myPass)){
                  
                    }

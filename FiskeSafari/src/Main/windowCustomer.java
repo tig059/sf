@@ -15,7 +15,7 @@ import java.util.*;
  * @author Jack
  */
 public class windowCustomer extends javax.swing.JFrame {
-
+Methods m = new Methods();
     private String accountName;
     /**
      * Creates new form windowCustomer
@@ -34,9 +34,12 @@ public class windowCustomer extends javax.swing.JFrame {
         a.DBHandler();
         System.out.println("Inside constructor of windowCustomer, "+
                 " accountName: " + accountName);
-        String safariInfo =  a.sendQuerySafariVisa("select * from safari where sSpotsTaken != 15");
-        String userInfo =  a.sendQueryUserInfo("select * from custumer where cId =" + "'" +  accountName + "'");
-        String yourSafaris = a.sendQueryOwnSafari("select * from safari, participant where safari.sId = participant.sId and participant.cId =" + "'" + accountName + "'");
+        //String safariInfo =  a.sendQuerySafariVisa("select * from safari where sSpotsTaken != 15");
+        String safariInfo = m.safariInfo();
+        //String userInfo =  a.sendQueryUserInfo("select * from custumer where cId =" + "'" +  accountName + "'");
+        String userInfo = m.userInfo(accountName);
+        //String yourSafaris = a.sendQueryOwnSafari("select * from safari, participant where safari.sId = participant.sId and participant.cId =" + "'" + accountName + "'");
+        String yourSafaris = m.getYourSafaris(accountName);
         textArea2.setText(yourSafaris + "\n" + "\n");
         
         textArea1.setText(safariInfo); // visar info om alla safari
@@ -289,7 +292,8 @@ public class windowCustomer extends javax.swing.JFrame {
         q.DBHandler();
         // Gör en ny sendQuerytomorrow.
         
-        String currentEquipementLeft = q.sendQueryEq("select sEquipementLeft from safari where sId =" + "'" + sId + "'");
+        //String currentEquipementLeft = q.sendQueryEq("select sEquipementLeft from safari where sId =" + "'" + sId + "'");
+        String currentEquipementLeft = m.getCurrentEquipementLeft(sId);
         int currentEquipementLeft2 = Integer.parseInt(currentEquipementLeft);
         int totaleq = currentEquipementLeft2 - equipment2;
         String totaleq2 = Integer.toString(totaleq);
@@ -297,7 +301,8 @@ public class windowCustomer extends javax.swing.JFrame {
             System.out.println("Sorry no EQ LEFT!!!!");
         }
         else {
-                    String currentTakenSpots = q.sendQuerySpotsTaken("select sSpotsTaken from safari where sId =" + "'" + sId + "'");
+        //String currentTakenSpots = q.sendQuerySpotsTaken("select sSpotsTaken from safari where sId =" + "'" + sId + "'");
+        String currentTakenSpots = m.getCurrentTakenSpots(sId);
         int currentTakenSpots2 = Integer.parseInt(currentTakenSpots);
         int totalSpots = currentTakenSpots2 + participants3;
         String totalSpots2 = Integer.toString(totalSpots);
@@ -309,9 +314,13 @@ public class windowCustomer extends javax.swing.JFrame {
             
         }
         else {
-        q.sendQuery("INSERT INTO participant VALUES " + "('" + accountName + "', '" + sId + "', '" + sleep + "', '" + part4 + "' , '" + equipment2 + "', '" + hasPaid + "'" + ")");
-        q.sendQuery("update safari set sSpotsTaken = '" + totalSpots2 +  "' where sId = " + "'" + sId + "'");
-        q.sendQuery("update safari set sEquipementLeft  = '" + totaleq2 +  "' where sId = " + "'" + sId + "'");
+        //q.sendQuery("INSERT INTO participant VALUES " + "('" + accountName + "', '" + sId + "', '" + sleep + "', '" + part4 + "' , '" + equipment2 + "', '" + hasPaid + "'" + ")");
+        m.setParticipant(accountName, sId, sleep, part4, equipment2, hasPaid);
+        
+        //q.sendQuery("update safari set sSpotsTaken = '" + totalSpots2 +  "' where sId = " + "'" + sId + "'");
+        m.setSpotsTaken(totalSpots2, sId);
+        //q.sendQuery("update safari set sEquipementLeft  = '" + totaleq2 +  "' where sId = " + "'" + sId + "'");
+        m.setEquipmentLeft(totaleq2, sId);
         }
           
         }
@@ -320,7 +329,8 @@ public class windowCustomer extends javax.swing.JFrame {
         //q.sendQuery("update safari set sSpotsTaken = '" + part4 +  "' where sId = " + "'" + sId + "'");
         //q.sendQuery("update safari set sEquipementLeft  = '" + equipment +  "' where sId = " + "'" + sId + "'");
         
-        String takenSpots = q.sendQuerySpotsTaken("select sSpotsTaken from safari where sId =" + "'" + sId + "'");
+        //String takenSpots = q.sendQuerySpotsTaken("select sSpotsTaken from safari where sId =" + "'" + sId + "'");
+        String takenSpots = m.getTakenSpots(sId);
         int takenSpots2 = Integer.parseInt(takenSpots);
         if(takenSpots2>15) {
         System.out.println("Over 15 spots error");
@@ -335,9 +345,12 @@ public class windowCustomer extends javax.swing.JFrame {
         jLabel1.setText(total2q);
         //Uppdatera i textfields
         
-        String safariInfo =  q.sendQuerySafariVisa("select * from safari where sSpotsTaken != 15");
-        String bookings =  q.sendQueryUserInfo("select * from participants");
-        String yourSafaris = q.sendQueryOwnSafari("select * from safari, participant where safari.sId = participant.sId and participant.cId =" + "'" + accountName + "'");
+        //String safariInfo =  q.sendQuerySafariVisa("select * from safari where sSpotsTaken != 15");
+        String safariInfo = m.getSafariInfo();
+        //String bookings =  q.sendQueryUserInfo("select * from participants");
+        String bookings = m.getBookings();
+        //String yourSafaris = q.sendQueryOwnSafari("select * from safari, participant where safari.sId = participant.sId and participant.cId =" + "'" + accountName + "'");
+        String yourSafaris = m.getYourSafaris(accountName);
         textArea1.setText(safariInfo); // visar info om alla safari
         //textArea2.setText(bookings);  //Visar info om dina signade safaris
         textArea2.setText(yourSafaris + "Total price:" + total2q + "\n" + "\n");
@@ -351,11 +364,13 @@ public class windowCustomer extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        datorBas z = new datorBas();
-        z.DBHandler();
         String avbokId = jTextField4.getText();
-        z.sendQuery("delete from participant where cId =" + "'" + accountName + "'" + "and sId=" + "'" + avbokId + "'");
-        String yourSafaris = z.sendQueryOwnSafari("select * from safari, participant where safari.sId = participant.sId and participant.cId =" + "'" + accountName + "'");
+        //z.sendQuery("delete from participant where cId =" + "'" + accountName + "'" + "and sId=" + "'" + avbokId + "'");
+        m.deleteBooking(accountName, avbokId);
+        //String yourSafaris = z.sendQueryOwnSafari("select * from safari, participant where safari.sId = participant.sId and participant.cId =" + "'" + accountName + "'");
+        String yourSafaris = m.getYourSafaris(accountName);
+        String safariInfo = m.getSafariInfo();
+        textArea1.setText(safariInfo);
         textArea2.setText(yourSafaris + "\n" + "\n");
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -369,6 +384,9 @@ public class windowCustomer extends javax.swing.JFrame {
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // TODO add your handling code here:
+        //Betalning sker
+        m.setMoneyFiskekort(accountName);
+        
         System.out.println("you have bought a fiskekort");
         errorMsg("You have bought a fiskekort for 100 kronor");
     }//GEN-LAST:event_jToggleButton3ActionPerformed

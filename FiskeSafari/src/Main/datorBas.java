@@ -72,7 +72,7 @@ public class datorBas {
         //printing = printing + rs.getString("aId") + "\n";
         printing = printing + "Username: " + rs.getString("cId") + "\n";
         printing = printing + rs.getString("cName") + "\n";
-        //printing = printing + rs.getString("cSex") + "\n";
+        printing = printing + rs.getBoolean(1) + "\n";
         printing = printing + rs.getString("cEmail") + "\n";
         
 
@@ -203,7 +203,7 @@ public class datorBas {
         printing = printing + "Guide ID  :  "+rs.getString("gId") + "\n";
        // printing = printing + rs.getString("gName") + "\n";
         printing = printing + "Equipment :  "+rs.getString("sEquipementLeft") + "\n";
-        printing = printing + "nfo: "+rs.getString("gInfo");
+        printing = printing + "Info: "+rs.getString("gInfo");
         //printing = printing + "Info      :  "+rs.getString("cInfo") + "\n";
         printing = printing + "\n" + "\n";
         
@@ -398,7 +398,7 @@ public class datorBas {
                     while(rs.next())
       {
         
-        printing = printing + rs.getString("sEquipementLeft");
+        printing = printing + rs.getString(1);
 //plingplång
 
       }
@@ -578,6 +578,133 @@ public class datorBas {
       }
                     
                    
+
+         }
+         
+
+         catch(SQLException e)
+
+         {
+              
+
+         }
+
+    
+         return printing;
+
+     }
+      public int sendQueryAmount(String str)
+
+     {
+
+          int printing = 0;
+         try
+
+         {
+
+              rs = stmnt.executeQuery(str);
+                    while(rs.next())
+      {
+        //printing = printing + rs.getString("aId") + "\n";
+        printing = printing + rs.getInt(1);
+
+
+      }
+
+         }
+         
+
+         catch(SQLException e)
+
+         {
+              
+
+         }
+
+    
+         return printing;
+
+     }
+        public String sendQueryBank(String str)
+
+     {
+
+          String printing = "";
+         try
+
+         {
+
+              rs = stmnt.executeQuery(str);
+                    while(rs.next())
+      {
+        printing = printing + rs.getString(1) + ": ";
+        printing = printing + rs.getString(2) +  "\n";
+
+
+      }
+
+         }
+         
+
+         catch(SQLException e)
+
+         {
+              
+
+         }
+
+    
+         return printing;
+
+     }
+               public String sendQueryBank2(String str)
+
+     {
+
+          String printing = "";
+         try
+
+         {
+
+              rs = stmnt.executeQuery(str);
+                    while(rs.next())
+      {
+        printing = printing + rs.getString(1) + " ";
+        printing = printing + rs.getString(2) +  "\n";
+
+
+      }
+
+         }
+         
+
+         catch(SQLException e)
+
+         {
+              
+
+         }
+
+    
+         return printing;
+
+     }
+       public int sendQueryGetSaldo(String str)
+
+     {
+
+          int printing = 0;
+         try
+
+         {
+
+              rs = stmnt.executeQuery(str);
+                    while(rs.next())
+      {
+        printing = printing + rs.getInt(1);
+
+
+      }
 
          }
          

@@ -10,7 +10,7 @@
  * @author Jack
  */
 public class createUser extends javax.swing.JFrame {
-
+Methods m = new Methods();
     /**
      * Creates new form createUser
      */
@@ -121,6 +121,7 @@ public class createUser extends javax.swing.JFrame {
         String personNr = jTextField2.getText();
         String email    = jTextField3.getText();
         String password = jTextField4.getText();
+        int fiskekort = 0;
         // set gender
         String male = "Male";
         String female = "Female";
@@ -135,10 +136,11 @@ public class createUser extends javax.swing.JFrame {
         gender = "Female";
        }
        // gender set
-       datorBas a = new datorBas();
-       a.DBHandler();
+       //datorBas a = new datorBas();
+       //a.DBHandler();
        //a.sendQuery("insert into custumer values (personNr,'name', 'gender', 'email', 'password'");
-       a.sendQuery("INSERT INTO custumer VALUES " + "('" + personNr + "', '" + name + "', '" + gender + "' , '" + email + "' , '" + password + "'" + ")");
+       //a.sendQuery("INSERT INTO custumer VALUES " + "('" + personNr + "', '" + name + "', '" + gender + "' , '" + email + "' , '" + password + "'" + ")");
+       m.createUser(personNr, name, gender, email, password);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

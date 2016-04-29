@@ -10,7 +10,7 @@
  * @author Jack
  */
 public class windowGuide extends javax.swing.JFrame {
-
+Methods m = new Methods();
     /**
      * Creates new form windowGuide
      */
@@ -28,11 +28,13 @@ public class windowGuide extends javax.swing.JFrame {
         q.DBHandler();
         
         
-        String yourSafari = q.sendQuerySafariVisaGuide("select * from safari where gid ='" + accountName + "'");   
-           jTextArea1.setText(yourSafari);
+        //String yourSafari = q.sendQuerySafariVisaGuide("select * from safari where gid ='" + accountName + "'");   
+        String yourSafari = m.getGuideSafaris(accountName);
+        jTextArea1.setText(yourSafari);
            
-            String yourInfo = q.sendQueryGuideInfo("select * from guide where gid ='" + accountName + "'");   
-           jLabel1.setText(yourInfo);
+        //String yourInfo = q.sendQueryGuideInfo("select * from guide where gid ='" + accountName + "'");   
+        String yourInfo = m.getGuideInfo(accountName);
+        jLabel1.setText(yourInfo);
     }
 
     /**
